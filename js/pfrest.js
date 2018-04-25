@@ -348,30 +348,11 @@ $.each(pricenStock.products, function(pi,pv){
 	});
 }
 
-function f_toCreateOrder(){
-	/*var item = $("#product_code").text(),
-		itemlist = $("#itemlist").val(),
-		imageurl = $("div.image-block img").attr("src"),
-		futurestock = encodeURI($("#future_stock").val()),
-		columnprices = encodeURI($("#column_prices").val());
-	if(futurestock == "{}")
-		$.redirectPost(baseurl + "createorder.php",{"item": item ,"itemlist":itemlist, "imageurl":imageurl,"model":$("#item_model").val(), "columnprices":columnprices});
-	else
-		$.redirectPost(baseurl + "createorder.php",{"item": item ,"itemlist":itemlist, "imageurl":imageurl,"model":$("#item_model").val(), "futurestock":futurestock,"columnprices":columnprices});
-	*/
-}
-
 //INVOICES
 function f_getinvoice(){
 	var invoicenum 	= $('#invoicenum').val() || 0;
 	var	todate 		= $('#dateto').val();
 	var	fromdate 	= $('#datefrom').val();
-	console.log("came here");
-	if(todate>fromdate)
-	{
-		showAlert("Error!!","Enter valid range");
-	}
-
 	var	uuid		= f_generateUUID();
 	var	webaccount 	= $("#webaccount").val(),
 		requestURL 	= preurl + "InvoiceOverview?get_invoiceoverview_req=",
