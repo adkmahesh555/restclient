@@ -1,0 +1,129 @@
+/** loader */
+#dvLoading {
+    width: 60px;
+    height: 55px;
+    position: fixed;
+    top: 40%;
+    left: 49%;
+    background: url("../images/loading.gif") no-repeat center 11px;
+    z-index: 1001;
+}
+/* Utility classes */
+.padding-xs { padding: .1em; }
+.maxwidth100{max-width:100%;}
+.bg-slategray{
+	background: #778899;
+    color: white;
+}
+.bg-alice{
+	background:aliceblue;
+}
+.bg-beige{background:beige;}
+.font-bold {
+  font-weight: bold;
+}
+.round15 {
+    border-radius: 15px;
+}
+.scrollover340{
+  max-height:340px;
+  overflow-y:auto;
+}
+.navbar-custom{
+	background: #1c8b98;
+    border: 1px solid #0f8794;
+    border-radius: 0;
+}
+.navbar-custom .navbar-nav>li>a,.navbar-custom .navbar-brand {
+    color: #fff!important;
+    background-color: transparent!important;
+}
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+    color: #0ff!important;
+}
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+    color: #fff!important;
+    background-color: #20b2aa!important;
+}
+/* Accordion collapse/expanded icon */
+.panel-title>a[aria-expanded="true"]:after {
+	/*content:"\25BC";*/	
+	content: "\2796";
+	float: right;
+}
+.panel-title>a:after {
+    /*content: "\25BA";*/
+	content: "\2795";
+    float: right;
+    font-size: 11px;
+}
+
+/*Add Item (collapsible)*/
+#additemImage-wrapper:hover {
+	border:2px blue solid;
+	cursor:pointer;
+}
+#additemImage-wrapper:hover .additemtext{ 
+	visibility:visible;
+}
+#additemImage-wrapper .additemtext{
+	position: relative;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    background: blue;
+	visibility:hidden;
+}
+
+/*Decoration options */
+select.color-select, select.area-select{
+	min-width: 30%;
+    border-radius: 3px;
+    height: 25px;
+	margin:10px 0 10px 0;
+}
+.dvdecoOption{padding: 5px 15px 5px 15px;border: 1px solid gray;border-radius:5px;margin: 2px;}
+.dvdecoOption:not(.selectedDeco):hover,.dvAddonsOption:not(.selected):hover {border:2px solid orange;cursor:pointer;}
+.dvdecoOption.selectedDeco,.dvAddonsOption.selected {border:3px solid green;cursor:pointer;}
+.dvdecoOption.selectedDeco .unselectBtn, .dvAddonsOption.selected .unselectBtn{display:block;}
+.dvdecoOption:not(.selectedDeco) .unselectBtn, .dvAddonsOption:not(.selected) .unselectBtn{display:none;}
+.crossBtn.unselectBtn{
+	height: 25px;
+    width: 25px;
+    border: none;
+    float: right;
+    background: url(../images/crossBtnRed.png) no-repeat;
+}
+.dvAddonsOption{border:1px solid lightseagreen;border-radius:5px;margin-bottom:5px;}
+
+/* Deco options and upload logo */
+.dvDeconLogo{
+	border: 1px solid dimgrey;
+	border-radius:5px;
+	padding: 10px;
+}
+/* for fixed table header, Note:must be used with .table-fixed-col-* class */
+.table-fixed thead,.table-fixed  tbody,.table-fixed  tr,.table-fixed  td,.table-fixed  th { display: block; }
+.table-fixed tr:after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.table-fixed tbody {
+    max-height: 420px;
+    overflow-y: auto;
+}
+.table-fixed tbody td,.table-fixed  thead th {
+    float: left;
+}
+
+/* fixed table's columns must be specified in percentage */
+.table-fixed-col-5 th{width:19.5%}
+.table-fixed-col-5 td{width:19.8%}
+.table-fixed-col-6 th, .table-fixed-col-6 td {width:16.25%}
+.table-fixed-col-7 th {width:14%} 
+.table-fixed-col-7 td {width:14.2%}
