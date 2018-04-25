@@ -365,8 +365,8 @@ function f_getinvoice(){
 			"invoice_number":invoicenum,
 			"date_to":todate,
 			"date_from":fromdate
-
 		};
+		
 	requestjson["get_invoiceoverview_req"].push(requestparam);
 	console.log(JSON.stringify(requestjson,0,3));
 	url = encodeURI(requestURL + JSON.stringify(requestjson));
