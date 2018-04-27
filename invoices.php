@@ -1,7 +1,6 @@
 <?php
 	/* Logged in session handling*/
 	require "includes/validateLogin.php";
-	//include "includes/header.php"; //include top header part
 	$webaccount = isset($_SESSION["webaccount"])? $_SESSION["webaccount"]:"unknown";
 
 ?>
@@ -10,7 +9,7 @@
 <head>
 	<?php require "includes/header.php" ?>
 </head>
-<body style="background:aliceblue">	
+<body style="background:aliceblue">
 	<?php require "includes/navbar.php" ?>
 	<div class="container" style="margin-top:60px;">
 		<div id="invoice-wrapper">
@@ -54,54 +53,12 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" id="searchInvoice" class="btn btn-info" data-dismiss="modal">Search</button>
+								<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!--<div class="table-responsive">
-				<table class="table table-striped">
-					<thead class="bg-info">
-						<tr>
-							<th>Invoice Number</th>
-							<th>Invoice Date</th>
-							<th>Reference</th>
-							<th>Amount</th>
-							<th>Pdf link</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>7693952</td>
-							<td>2018-01-02</td>
-							<td>123</td>
-							<td>333</td>
-							<td>**</td>
-						</tr>
-						<tr>
-							<td>32493247</td>
-							<td>2018-01-02</td>
-							<td>123</td>
-							<td>333</td>
-							<td>**</td>
-						</tr>
-						<tr>
-							<td>43243952</td>
-							<td>2018-01-02</td>
-							<td>123</td>
-							<td>333</td>
-							<td>**</td>
-						</tr>
-						<tr>
-							<td>98087883</td>
-							<td>2018-01-02</td>
-							<td>332</td>
-							<td>4532</td>
-							<td>**</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>-->
 			<script id="invoice-template" type="text/x-handlebars-template">
 				<div class="table-responsive">
 					<table class="table table-striped table-fixed table-fixed-col-5" style="border:1px solid gainsboro">
@@ -132,6 +89,6 @@
 				<!-- invoice content comes inside this div -->
 			</div>
 		</div>
-	</div>	
+	</div>
 </body>
 </html>

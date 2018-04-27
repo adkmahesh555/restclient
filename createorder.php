@@ -1,7 +1,6 @@
 <?php
 /* Logged in session handling*/
 require "includes/validateLogin.php";
-//include "includes/header.php"; //include top header part
 $webaccount = isset($_SESSION["webaccount"])? $_SESSION["webaccount"]:"Unknown";
 
 ?>
@@ -251,13 +250,13 @@ $webaccount = isset($_SESSION["webaccount"])? $_SESSION["webaccount"]:"Unknown";
                                 </div>
                                 <div class="row">
                                   <div class="col-sm-6">
-                                    <div style="/*width:60%;float:left;*/">
+                                    <div>
                                       <p><b>Method : "{{Method}}"</b></p>
                                       <p>Position : "{{Position}}" </p>
                                     </div>
                                   </div>
                                   <div class="col-sm-6">
-                                    <div style="/*width:40%;float:left;*/">
+                                    <div>
                                       <p>Length: &#x2195; "{{Max_length}}"</p>
                                       <p>Width : &#x2194; "{{Max_width}}"</p>
                                       <p>Colors:"{{Max_colors}}"</p>
@@ -448,6 +447,7 @@ $webaccount = isset($_SESSION["webaccount"])? $_SESSION["webaccount"]:"Unknown";
                 <th>Quantity</th>
                 <th>Unit price</th>
                 <th>Total</th>
+
               </tr>
             </thead>
             <tbody>
@@ -459,12 +459,13 @@ $webaccount = isset($_SESSION["webaccount"])? $_SESSION["webaccount"]:"Unknown";
                 <td class="col-xs-2" id="qty_{{material_nr}}">{{qty}}</td>
                 <td class="col-xs-2" id="price_{{material_nr}}">{{unitprice}}</td>
                 <td class="col-xs-2">{{price}} {{../currency}}</td>
+
               </tr>
               {{/each}}
             </tbody>
           </table>
           {{#if Products.[0].Addons}}
-          <table class="table table-condensed">
+          <table class="table table-condensed addonstbl">
             <thead class="text-warning">
               <tr>
                 <th colspan="6">ADD ON ITEMS</th>
@@ -473,12 +474,12 @@ $webaccount = isset($_SESSION["webaccount"])? $_SESSION["webaccount"]:"Unknown";
             <tbody>
               {{#each Products}}
               {{#each Addons}}
-              <tr class="itemtblrow">
-                <td class="item col-xs-2" id="item_{{material_nr}}">{{material_nr}}</td>
+              <tr class="addonsrow simulated">
+                <td class="col-xs-2 addonitem">{{material_nr}}</td>
                 <td class="col-xs-2">{{delivery_date}}</td>
                 <td class="col-xs-2">{{instock}}</td>
-                <td class="col-xs-2" id="qty_{{material_nr}}">{{qty}}</td>
-                <td class="col-xs-2" id="price_{{material_nr}}">{{unitprice}}</td>
+                <td class="col-xs-2 qty">{{qty}}</td>
+                <td class="col-xs-2 price">{{unitprice}}</td>
                 <td class="col-xs-2">{{price}} {{../../currency}}</td>
               </tr>
               {{/each}}

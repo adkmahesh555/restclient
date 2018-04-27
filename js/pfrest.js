@@ -10,7 +10,7 @@ $(document).ready(function(){
 			$("#dvLoading").hide(); // hide loading image if it was displayed on ajax call
 			showAlert("AJAX Error!!!","Response code: " + jqxhr.status + "<br>Message: " + JSON.parse(jqxhr.responseText).response.message +
 									 "<br><br>Responsedata: " + jqxhr.responseText);
-			$("#alertModal").modal("show");
+			//$("#alertModal").modal("show");
 		},
 		headers: {"Authorization": "Basic " + f_getCookie("auth")}
 	});
@@ -348,6 +348,19 @@ $.each(pricenStock.products, function(pi,pv){
 	});
 }
 
+function f_toCreateOrder(){
+	/*var item = $("#product_code").text(),
+		itemlist = $("#itemlist").val(),
+		imageurl = $("div.image-block img").attr("src"),
+		futurestock = encodeURI($("#future_stock").val()),
+		columnprices = encodeURI($("#column_prices").val());
+	if(futurestock == "{}")
+		$.redirectPost(baseurl + "createorder.php",{"item": item ,"itemlist":itemlist, "imageurl":imageurl,"model":$("#item_model").val(), "columnprices":columnprices});
+	else
+		$.redirectPost(baseurl + "createorder.php",{"item": item ,"itemlist":itemlist, "imageurl":imageurl,"model":$("#item_model").val(), "futurestock":futurestock,"columnprices":columnprices});
+	*/
+}
+
 //INVOICES
 function f_getinvoice(){
 	var invoicenum 	= $('#invoicenum').val() || 0;
@@ -365,8 +378,8 @@ function f_getinvoice(){
 			"invoice_number":invoicenum,
 			"date_to":todate,
 			"date_from":fromdate
+
 		};
-		
 	requestjson["get_invoiceoverview_req"].push(requestparam);
 	console.log(JSON.stringify(requestjson,0,3));
 	url = encodeURI(requestURL + JSON.stringify(requestjson));
@@ -920,7 +933,9 @@ function f_setOrder(){
 	var decoOptionsObj	 = {};
 	var decorationRefObj = {};
 	var artRefObj		 = {};
-
+  var addonsRefObj = {}, addonsObj = {};
+	var addonsRefArr = [], addonsArr = [];
+  var addonscounter = 0;
 
 	// get products in prodobj object and push it to 'Product' array
 	//$("tr.itemBlock").each(function(){
@@ -946,6 +961,24 @@ function f_setOrder(){
 			prodobj = {};
 		});
 	}); /* each product */
+
+	 //if Addons exists
+	 if($("table.addonstbl").length && $("tr.addonsrow").length){
+
+		 $(".addonsrow.simulated").each(function(){
+			 addonsRefObj.addonref_id  = ++addonscounter;
+			 addonsObj.addonref_id	 	 = addonscounter;
+			 addonsObj.material_number = $(this).find(".addonitem").text().trim();
+			 addonsObj.qty 						 = Number($(this).find(".qty").text());
+			 addonsObj.price 					 = Number($(this).find(".price").text());
+
+			 addonsRefArr.push(addonsRefObj);
+			 addonsArr.push(addonsObj);
+			 addonsObj 		= {};
+			 addonsRefObj = {};
+		 });
+
+	 }
 
 		//if decoration exists
 		if($("table.decoPriceOverviewtbl").length && $(".decoration.simulated").length){
@@ -985,9 +1018,10 @@ function f_setOrder(){
 					//check for art(logo)
 					if($(".dvDeconLogo .dvLogoUpload").length > 0){
 
-						decoObj.art_references = [];		//Art reference
 						var artObjData = $("#artInfoObj_" + configid).val();
+
 						if(artObjData != undefined && artObjData != ""){
+							decoObj.art_references = [];		//Art reference
 							artObjData = JSON.parse(artObjData);
 
 							$.each(artObjData.art,function(artObjIndex,artObj){
@@ -1017,6 +1051,12 @@ function f_setOrder(){
 			}); /* each decoration*/
 		} // if decorated order
 
+		if(addonsRefArr.length){
+				$.each(productArr, function(i,obj){			//push addonsReferences to corresponding products
+						obj.addon_references = addonsRefArr;
+				});
+				requestparam.addons = addonsArr;
+		}
 
 	if(decoRefArr.length){
 			$.each(productArr, function(i,obj){			//push decorationReferences to corresponding items

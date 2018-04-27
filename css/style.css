@@ -127,3 +127,5 @@ select.color-select, select.area-select{
 .table-fixed-col-6 th, .table-fixed-col-6 td {width:16.25%}
 .table-fixed-col-7 th {width:14%} 
 .table-fixed-col-7 td {width:14.2%}
+
+div[data-class="logo-container-root"]{z-index:1031!important;} /* fix for upper section of logo tool div going below navbar */
