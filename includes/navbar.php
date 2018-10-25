@@ -35,9 +35,9 @@
 					</a>
 				</li>
 				<li><a href="login.php">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
-				<li><a href="help.php">Help</a></li>
+				<li><a href="pfrestservicedocs.html" target="_blank" title="Help documentation">Help</a></li>
 				<li>
-					<a href="pfrestservicedocs.html" target="_blank">
+					<a href="help.php">
 						<span class="glyphicon glyphicon-question-sign" title="Quick help"></span>
 					</a>
 				</li>
